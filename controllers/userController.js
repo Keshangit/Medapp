@@ -62,7 +62,7 @@ exports.login = async (req, res) => {
                         res.status(403).json({ title: 'Forbidden!', message: 'User not verified yet!' });
                     } else {
                         const token = jwt.sign({ userId: user[0].id, role: user[0].role }, process.env.JWT_SECRET, { expiresIn: '365d' });
-                        res.status(200).json({ title: 'Success', message: 'You have successfully logged in.', token: token });
+                        res.status(200).json({ title: 'Success', message: 'You have successfully logged in.', role: user[0].role, token: token });
                     }
                 }
             }
